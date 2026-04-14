@@ -11,7 +11,7 @@ export const routes: Routes = [
   {
     path: 'app',
     canActivate: [auditUserGuard],
-    loadComponent: () => import('./features/shell/main-layout').then((m) => m.MainLayoutComponent),
+    loadComponent: () => import('./features/main-layoutt').then((m) => m.MainLayoutComponent),
     children: [
       { path: '', redirectTo: 'usuarios', pathMatch: 'full' },
       {
@@ -20,30 +20,19 @@ export const routes: Routes = [
           import('./features/usuarios/usuario-list').then((m) => m.UsuarioListComponent),
       },
       {
-        path: 'categorias',
+        path: 'citas',
         loadComponent: () =>
-          import('./features/categorias/categoria-list').then((m) => m.CategoriaListComponent),
+          import('./features/citas/cita-list').then((m) => m.CitaListComponent),
       },
       {
-        path: 'productos',
+        path: 'enfermeros',
         loadComponent: () =>
-          import('./features/productos/producto-list').then((m) => m.ProductoListComponent),
+          import('./features/enfermeros/enfermero-list').then((m) => m.EnfermeroListComponent),
       },
       {
-        path: 'pedidos',
+        path: 'historiales',
         loadComponent: () =>
-          import('./features/pedidos/pedido-list').then((m) => m.PedidoListComponent),
-      },
-      {
-        path: 'detalles-pedido',
-        loadComponent: () =>
-          import('./features/detalles-pedido/detalle-pedido-list').then(
-            (m) => m.DetallePedidoListComponent,
-          ),
-      },
-      {
-        path: 'pagos',
-        loadComponent: () => import('./features/pagos/pago-list').then((m) => m.PagoListComponent),
+          import('./features/historiales/historial-list').then((m) => m.HistorialListComponent),
       },
     ],
   },
