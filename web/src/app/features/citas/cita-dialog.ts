@@ -58,7 +58,7 @@ export class CitaDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.catSvc.list().subscribe({
-      next: (rows) => this.citas.set(rows),
+      next: (rows) => this.pacientes.set(rows),
       error: (err: HttpErrorResponse) => this.snack.open(this.msg(err), 'Cerrar', { duration: 6000 }),
     });
     if (this.data.mode === 'edit' && this.data.row) {

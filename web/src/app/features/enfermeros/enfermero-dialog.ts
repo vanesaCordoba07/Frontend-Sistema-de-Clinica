@@ -53,7 +53,7 @@ export class EnfermeroDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.catSvc.list().subscribe({
-      next: (rows) => this.citas.set(rows),
+      next: (rows) => this.usuarios.set(rows),
       error: (err: HttpErrorResponse) => this.snack.open(this.msg(err), 'Cerrar', { duration: 6000 }),
     });
     if (this.data.mode === 'edit' && this.data.row) {
@@ -100,7 +100,7 @@ export class EnfermeroDialogComponent implements OnInit {
       return;
     }
     this.svc
-      .update(this.data.row!.id_cita, {
+      .update(this.data.row!.id_enfermero, {
         id_usuario: v.id_usuario,
         nombre: v.nombre,
         telefono: v.telefono,

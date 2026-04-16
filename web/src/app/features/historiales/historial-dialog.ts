@@ -105,7 +105,7 @@ export class HistorialDialogComponent implements OnInit {
       return;
     }
     this.svc
-      .update(this.data.row!.id_cita, {
+      .update(this.data.row!.id_historial, {
         id_cita: v.id_cita,
         id_enfermero: v.id_enfermero,
         diagnostico: v.diagnostico,
