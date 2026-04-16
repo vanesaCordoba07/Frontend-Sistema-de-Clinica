@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>{{ data.mode === 'create' ? 'Nuevo Médico' : 'Editar Médico' }}</h2>
+<mat-dialog-content class="dialog-body">
+    <form [formGroup]="form" class="grid">
+        <mat-form-field appearance="outline" class="span-2">
+            <mat-label>Nombre Completo</mat-label>
+            <input matInput formControlName="nombre" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="span-2">
+            <mat-label>Especialidad</mat-label>
+            <mat-select formControlName="id_especialidad">
+                @for (e of especialidades(); track e.id_especialidad) {
+                <mat-option [value]="e.id_especialidad">{{ e.nombre }}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="span-2">
+            <mat-label>Teléfono</mat-label>
+            <input matInput formControlName="telefono" />
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button type="button" (click)="cancel()">Cancelar</button>
+    <button mat-flat-button color="primary" type="button" (click)="save()">Guardar</button>
+</mat-dialog-actions>
