@@ -39,12 +39,10 @@ export class UsuarioDialogComponent {
 
   readonly form = this.fb.nonNullable.group({
     nombre_completo: ['', Validators.required],
-    nombre_usuario: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     clave: [''],
     rol: ['', Validators.required],
-    telefono: [''],
-    activo: [true],
+    estado: ['', Validators.required],
   });
 
   constructor() {
@@ -52,12 +50,10 @@ export class UsuarioDialogComponent {
       const r = this.data.row;
       this.form.patchValue({
         nombre_completo: r.nombre_completo,
-        nombre_usuario: r.nombre_usuario,
         email: r.email,
         clave: '',
         rol: r.rol,
-        telefono: r.telefono ?? '',
-        activo: r.activo,
+        estado: r.estado,
       });
     }
     if (this.data.mode === 'create') {
@@ -79,12 +75,10 @@ export class UsuarioDialogComponent {
       this.usuarioService
         .create({
           nombre_completo: v.nombre_completo,
-          nombre_usuario: v.nombre_usuario,
           email: v.email,
           clave: v.clave,
           rol: v.rol,
-          telefono: v.telefono || null,
-          activo: v.activo,
+          estado: v.estado,
         })
         .subscribe({
           next: () => this.dialogRef.close(true),
@@ -95,11 +89,9 @@ export class UsuarioDialogComponent {
     const id = this.data.row!.id_usuario;
     const body: UsuarioUpdate = {
       nombre_completo: v.nombre_completo,
-      nombre_usuario: v.nombre_usuario,
       email: v.email,
       rol: v.rol,
-      telefono: v.telefono || null,
-      activo: v.activo,
+      estado: v.estado,
     };
     if (v.clave?.trim()) {
       body.clave = v.clave;
