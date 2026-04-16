@@ -7,7 +7,7 @@ import {
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter, withViewTransitions } from '@angular/router';
 
-import { routes } from './app.routes';
+import { routes } from './app.routers';
 
 export const appConfig: ApplicationConfig = {
     providers: [

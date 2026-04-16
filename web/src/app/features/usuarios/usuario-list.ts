@@ -33,11 +33,10 @@ export class UsuarioListComponent implements AfterViewInit {
   private readonly snack = inject(MatSnackBar);
 
   readonly displayedColumns = [
-    'nombre_usuario',
     'nombre_completo',
     'email',
     'rol',
-    'activo',
+    'estado',
     'acciones',
   ];
   readonly dataSource = new MatTableDataSource<UsuarioRead>([]);
@@ -85,7 +84,7 @@ export class UsuarioListComponent implements AfterViewInit {
   }
 
   eliminar(row: UsuarioRead): void {
-    if (!confirm(`¿Eliminar usuario ${row.nombre_usuario}?`)) return;
+    if (!confirm(`¿Eliminar usuario ${row.email}?`)) return;
     this.usuarioService.delete(row.id_usuario).subscribe({
       next: () => {
         this.snack.open('Usuario eliminado', 'OK', { duration: 3000 });

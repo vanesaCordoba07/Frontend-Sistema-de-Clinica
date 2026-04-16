@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>{{ data.mode === 'create' ? 'Nuevo cita' : 'Editar cita' }}</h2>
+<mat-dialog-content class="dialog-body">
+  <form [formGroup]="form" class="grid">
+    <mat-form-field appearance="outline" class="span-2">
+      <mat-label>Paciente</mat-label>
+      <mat-select formControlName="id_paciente">
+        @for (p of pacientes(); track p.id_paciente) {
+          <mat-option [value]="p.id_paciente">{{ p.nombre }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="span-2">
+      <mat-label>Médico</mat-label>
+      <mat-select formControlName="id_medico">
+        @for (m of medicos(); track m.id_medico) {
+          <mat-option [value]="m.id_medico">{{ m.nombre }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="span-2">
+      <mat-label>Servicio</mat-label>
+      <mat-select formControlName="id_servicio">
+        @for (s of servicios(); track s.id_servicio) {
+          <mat-option [value]="s.id_servicio">{{ s.nombre }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="span-2">
+      <mat-label>Fecha y Hora</mat-label>
+      <input matInput formControlName="fecha_hora" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="span-2">
+      <mat-label>Motivo</mat-label>
+      <textarea matInput rows="3" formControlName="motivo"></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="span-2">
+      <mat-label>Estado</mat-label>
+      <textarea matInput rows="3" formControlName="estado"></textarea>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button type="button" (click)="cancel()">Cancelar</button>
+  <button mat-flat-button color="primary" type="button" (click)="save()">Guardar</button>
+</mat-dialog-actions>
