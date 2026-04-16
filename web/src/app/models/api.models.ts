@@ -10,7 +10,6 @@ export interface UsuarioRead {
 
 export interface UsuarioCreate {
   nombre_completo: string;
-  nombre_usuario: string;
   email: string;
   clave: string;
   rol: string;
