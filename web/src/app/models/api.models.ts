@@ -241,4 +241,69 @@ export interface EpsRead {
 
 
 
+export interface ServicioRead {
+  id_servicio: string;
+  nombre: string;
+  descripcion: string;
+  costo_base: number;
+  estado: string;
+  fecha_creacion: string | null;
+  fecha_edicion: string | null;
+  id_usuario_creacion: string;
+  id_usuario_edicion: string | null;
+}
+export interface ServicioCreate {
+  nombre_servicio: string;
+  descripcion: string;
+  costo: number;
+  estado: string;
+  id_usuario_creacion: string;
+}
 
+export interface ServicioUpdate {
+  nombre_servicio?: string;
+  descripcion?: string;
+  costo?: number;
+  estado?: string;
+  id_usuario_edicion: string;
+}
+export interface EspecialidadRead {
+  id_especialidad: string;
+  nombre: string;
+  descripcion: string;
+}
+
+export interface EspecialidadCreate {
+  nombre_especialidad: string;
+  descripcion: string;
+}
+
+export interface EspecialidadUpdate {
+  nombre_especialidad?: string;
+  descripcion?: string;
+}
+export interface MedicoRead {
+  id_medico: string;
+  id_usuario: string;
+  id_especialidad: string;
+  nombre: string;
+  telefono: string;
+  licencia: string;
+}
+
+export interface MedicoCreate {
+  id_usuario: string;
+  id_especialidad: string;
+  nombre: string;
+  telefono: string;
+  licencia: string;
+  id_usuario_creacion: string;
+}
+
+export interface MedicoUpdate {
+  id_especialidad?: string;
+  nombre?: string;
+  telefono?: string;
+  licencia?: string;
+  id_usuario_edicion: string;
+}
