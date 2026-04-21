@@ -160,6 +160,7 @@ export interface PacienteRead {
 export interface FacturaCreate {
   id_cita: string;
   total: number;
+  estado_pago: string;
   metodo_pago: string;
   fecha_pago: string;
   id_usuario_creacion: string;
@@ -168,6 +169,7 @@ export interface FacturaCreate {
 export interface FacturaUpdate {
   id_cita?: string;
   total?: number;
+  estado_pago?: string;
   metodo_pago?: string;
   fecha_pago?: string;
   id_usuario_edicion: string;
@@ -177,6 +179,7 @@ export interface FacturaRead {
   id_factura: string;
   id_cita: string;
   total: number;
+  estado_pago: string;
   metodo_pago: string;
   fecha_pago: string;
   fecha_creacion: string | null;
@@ -209,6 +212,35 @@ export interface TratamientoRead {
   dosis: string;
   duracion: string;
 }
+export interface EpsCreate {
+
+  nombre: string;
+  correo: string;
+  telefono: string;
+  direccion: string;
+  ciudad: string;
+}
+
+export interface EpsUpdate {
+
+  nombre: string;
+  correo: string;
+  telefono: string;
+  direccion: string;
+  ciudad: string;
+}
+
+export interface EpsRead {
+  id_eps: string;
+  nombre: string;
+  correo: string;
+  telefono: string;
+  direccion: string;
+  ciudad: string;
+}
+
+
+
 export interface ServicioRead {
   id_servicio: string;
   nombre: string;
