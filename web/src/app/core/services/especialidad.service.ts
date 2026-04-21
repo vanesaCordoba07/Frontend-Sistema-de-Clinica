@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { EspecialidadRead } from '../models/api.models';
+import { EspecialidadRead } from '../../models/api.models';
 
 @Injectable({ providedIn: 'root' })
 export class EspecialidadService {
