@@ -1,0 +1,55 @@
+<h2 mat-dialog-title>
+    {{ data.mode === 'create' ? 'Nueva EPS' : 'Editar EPS' }}
+</h2>
+
+<mat-dialog-content class="dialog-body">
+    <form [formGroup]="form" class="grid">
+
+
+        <mat-form-field appearance="outline" class="span-2">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="nombre" />
+            <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+                El nombre es obligatorio
+            </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline" class="span-2">
+            <mat-label>Correo</mat-label>
+            <input matInput formControlName="correo" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="span-2">
+            <mat-label>Teléfono</mat-label>
+            <input matInput formControlName="telefono" />
+            <mat-error *ngIf="form.get('telefono')?.hasError('required')">
+                El teléfono es obligatorio
+            </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline" class="span-2">
+            <mat-label>Dirección</mat-label>
+            <input matInput formControlName="direccion" />
+            <mat-error *ngIf="form.get('direccion')?.hasError('required')">
+                La dirección es obligatoria
+            </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline" class="span-2">
+            <mat-label>Ciudad</mat-label>
+            <input matInput formControlName="ciudad" />
+        </mat-form-field>
+
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancelar</button>
+
+    <button mat-flat-button color="primary" (click)="save()" [disabled]="form.invalid">
+        {{ data.mode === 'create' ? 'Guardar' : 'Actualizar' }}
+    </button>
+</mat-dialog-actions>
