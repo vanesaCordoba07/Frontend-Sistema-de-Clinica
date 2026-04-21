@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AuditContextService } from '../../core/audit-context.service';
-import { EspecialidadService } from '../../core/especialidad.service';
+import { EspecialidadService } from '../../core/services/especialidad.service';
 import { EspecialidadRead } from '../../models/api.models';
 
 export interface EspecialidadDialogData {
