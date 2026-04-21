@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MedicoRead, MedicoCreate, MedicoUpdate } from '../models/api.models';
+import { MedicoRead, MedicoCreate, MedicoUpdate } from '../../models/api.models';
 
 @Injectable({
     providedIn: 'root'
