@@ -35,7 +35,8 @@ export interface HistorialDialogData {
 export class HistorialDialogComponent implements OnInit {
   private readonly fb = inject(FormBuilder);
   private readonly svc = inject(HistorialService);
-  private readonly catSvc = inject(HistorialService);
+  private readonly citaSvc = inject(CitaService);
+  private readonly enfermeroSvc = inject(EnfermeroService);
   private readonly audit = inject(AuditContextService);
   private readonly dialogRef = inject(MatDialogRef<HistorialDialogComponent, boolean>);
   private readonly snack = inject(MatSnackBar);
@@ -55,8 +56,12 @@ export class HistorialDialogComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.catSvc.list().subscribe({
+    this.citaSvc.list().subscribe({
       next: (rows) => this.citas.set(rows),
+      error: (err: HttpErrorResponse) => this.snack.open(this.msg(err), 'Cerrar', { duration: 6000 }),
+    });
+    this.enfermeroSvc.list().subscribe({
+      next: (rows) => this.enfermeros.set(rows),
       error: (err: HttpErrorResponse) => this.snack.open(this.msg(err), 'Cerrar', { duration: 6000 }),
     });
     if (this.data.mode === 'edit' && this.data.row) {
