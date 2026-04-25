@@ -36,7 +36,9 @@ export interface CitaDialogData {
 export class CitaDialogComponent implements OnInit {
   private readonly fb = inject(FormBuilder);
   private readonly svc = inject(CitaService);
-  private readonly catSvc = inject(CitaService);
+  private readonly pacienteSvc = inject(PacienteService);
+  private readonly medicoSvc = inject(MedicoService);
+  private readonly servicioSvc = inject(ServicioService);
   private readonly audit = inject(AuditContextService);
   private readonly dialogRef = inject(MatDialogRef<CitaDialogComponent, boolean>);
   private readonly snack = inject(MatSnackBar);
@@ -57,8 +59,16 @@ export class CitaDialogComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.catSvc.list().subscribe({
+    this.pacienteSvc.list().subscribe({
       next: (rows) => this.pacientes.set(rows),
+      error: (err: HttpErrorResponse) => this.snack.open(this.msg(err), 'Cerrar', { duration: 6000 }),
+    });
+    this.medicoSvc.list().subscribe({
+      next: (rows) => this.medicos.set(rows),
+      error: (err: HttpErrorResponse) => this.snack.open(this.msg(err), 'Cerrar', { duration: 6000 }),
+    });
+    this.servicioSvc.list().subscribe({
+      next: (rows) => this.servicios.set(rows),
       error: (err: HttpErrorResponse) => this.snack.open(this.msg(err), 'Cerrar', { duration: 6000 }),
     });
     if (this.data.mode === 'edit' && this.data.row) {
