@@ -41,7 +41,7 @@ export class EnfermeroDialogComponent implements OnInit {
 
   readonly data = inject<EnfermeroDialogData>(MAT_DIALOG_DATA);
 
-  readonly usuarios = signal<UsuarioRead[]>([]);
+  readonly usuarios = signal<EnfermeroRead[]>([]);
 
   readonly form = this.fb.nonNullable.group({
     id_usuario: ['', Validators.required],
