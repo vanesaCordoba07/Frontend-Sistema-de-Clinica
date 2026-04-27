@@ -59,7 +59,7 @@ export class TratamientoDialogComponent implements OnInit {
         });
 
         if (this.data.mode === 'edit' && this.data.row) {
-            const r = this.data.row;
+            const r: TratamientoRead = this.data.row;
 
             this.form.patchValue({
                 id_historial: r.id_historial,

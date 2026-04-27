@@ -9,12 +9,13 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { filter } from 'rxjs/operators';
 
-import { FacturaService } from '../../core/services/factura.service';
-import { FacturaRead } from '../../models/api.models';
-import { FacturaDialogComponent, FacturaDialogData } from './factura-dialog';
+import { PacienteDialogComponent } from './paciente-dialog';
+import { PacienteDialogData } from './paciente-dialog';
+import { PacienteService } from '../../core/services/paciente.service';
+import { PacienteRead } from '../../models/api.models';
 
 @Component({
-    selector: 'app-factura-list',
+    selector: 'app-paciente-list',
     imports: [
         MatTableModule,
         MatPaginatorModule,
@@ -23,24 +24,26 @@ import { FacturaDialogComponent, FacturaDialogData } from './factura-dialog';
         MatProgressSpinnerModule,
         MatSnackBarModule,
     ],
-    templateUrl: './factura-list.html',
-    styleUrl: './factura-list.scss',
+    templateUrl: './paciente-list.html',
+    styleUrl: './paciente-list.scss',
 })
-export class FacturaListComponent implements AfterViewInit {
-    private readonly svc = inject(FacturaService);
+export class PacienteListComponent implements AfterViewInit {
+    private readonly svc = inject(PacienteService);
     private readonly dialog = inject(MatDialog);
     private readonly snack = inject(MatSnackBar);
 
     readonly displayedColumns = [
-        'id_cita',
-        'total',
-        'metodo_pago',
-        'estado_pago',
-        'fecha_pago',
-        'acciones'
+        'id_usuario',
+        'nombre',
+        'telefono',
+        'fecha_nacimiento',
+        'direccion',
+        'genero',
+        'tipo_afiliacion'
+
     ];
 
-    readonly dataSource = new MatTableDataSource<FacturaRead>([]);
+    readonly dataSource = new MatTableDataSource<PacienteRead>([]);
     loading = true;
 
     @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -71,23 +74,23 @@ export class FacturaListComponent implements AfterViewInit {
         this.open({ mode: 'create' });
     }
 
-    editar(row: FacturaRead): void {
+    editar(row: PacienteRead): void {
         this.open({ mode: 'edit', row });
     }
 
-    private open(data: FacturaDialogData): void {
-        this.dialog.open(FacturaDialogComponent, { width: '560px', data })
+    private open(data: PacienteDialogData): void {
+        this.dialog.open(PacienteDialogComponent, { width: '560px', data })
             .afterClosed()
             .pipe(filter(Boolean))
             .subscribe(() => this.reload());
     }
 
-    eliminar(row: FacturaRead): void {
-        if (!confirm(`¿Eliminar factura ${row.id_cita}?`)) return;
+    eliminar(row: PacienteRead): void {
+        if (!confirm(`¿Eliminar paciente ${row.id_paciente}?`)) return;
 
-        this.svc.delete(row.id_factura).subscribe({
+        this.svc.delete(row.id_paciente).subscribe({
             next: () => {
-                this.snack.open('Factura eliminada', 'OK', { duration: 3000 });
+                this.snack.open('Paciente eliminado', 'OK', { duration: 3000 });
                 this.reload();
             },
             error: (err: HttpErrorResponse) =>
