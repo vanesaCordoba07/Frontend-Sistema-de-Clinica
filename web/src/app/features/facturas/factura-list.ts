@@ -8,14 +8,18 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { filter } from 'rxjs/operators';
+import { DatePipe } from '@angular/common';
 
 import { FacturaService } from '../../core/services/factura.service';
 import { FacturaRead } from '../../models/api.models';
 import { FacturaDialogComponent, FacturaDialogData } from './factura-dialog';
+import { shortId } from '../../shared/ids';
 
 @Component({
     selector: 'app-factura-list',
+    standalone: true,
     imports: [
+        DatePipe,
         MatTableModule,
         MatPaginatorModule,
         MatButtonModule,
@@ -30,6 +34,8 @@ export class FacturaListComponent implements AfterViewInit {
     private readonly svc = inject(FacturaService);
     private readonly dialog = inject(MatDialog);
     private readonly snack = inject(MatSnackBar);
+
+
 
     readonly displayedColumns = [
         'id_cita',
@@ -52,6 +58,7 @@ export class FacturaListComponent implements AfterViewInit {
     constructor() {
         this.reload();
     }
+    shortId = shortId;
 
     reload(): void {
         this.loading = true;

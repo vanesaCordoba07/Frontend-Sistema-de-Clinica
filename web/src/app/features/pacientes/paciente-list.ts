@@ -8,15 +8,19 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { filter } from 'rxjs/operators';
+import { DatePipe } from '@angular/common';
 
 import { PacienteDialogComponent } from './paciente-dialog';
 import { PacienteDialogData } from './paciente-dialog';
 import { PacienteService } from '../../core/services/paciente.service';
 import { PacienteRead } from '../../models/api.models';
+import { shortId } from '../../shared/ids';
 
 @Component({
     selector: 'app-paciente-list',
+    standalone: true,
     imports: [
+        DatePipe,
         MatTableModule,
         MatPaginatorModule,
         MatButtonModule,
@@ -55,6 +59,8 @@ export class PacienteListComponent implements AfterViewInit {
     constructor() {
         this.reload();
     }
+    shortId = shortId;
+
 
     reload(): void {
         this.loading = true;

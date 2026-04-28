@@ -48,7 +48,7 @@ export class TratamientoDialogComponent implements OnInit {
         nombre_tratamiento: ['', Validators.required],
         descripcion: [''],
         dosis: ['', Validators.required],
-        duracion: [0, Validators.required],
+        duracion: ['', Validators.required],
     });
 
     ngOnInit(): void {
@@ -97,7 +97,7 @@ export class TratamientoDialogComponent implements OnInit {
                 descripcion: v.descripcion,
                 dosis: v.dosis,
                 duracion: v.duracion,
-                id_usuario_creacion: uid,
+
             }).subscribe({
                 next: () => this.dialogRef.close(true),
                 error: (err: HttpErrorResponse) =>
@@ -113,7 +113,7 @@ export class TratamientoDialogComponent implements OnInit {
             descripcion: v.descripcion,
             dosis: v.dosis,
             duracion: v.duracion,
-            id_usuario_edicion: uid,
+
         }).subscribe({
             next: () => this.dialogRef.close(true),
             error: (err: HttpErrorResponse) =>

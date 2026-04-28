@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { CommonModule } from '@angular/common';
 
 import { AuditContextService } from '../../core/audit-context.service';
 import { PacienteService } from '../../core/services/paciente.service';
@@ -21,7 +22,9 @@ export interface PacienteDialogData {
 
 @Component({
     selector: 'app-paciente-dialog',
+    standalone: true,
     imports: [
+        CommonModule,
         ReactiveFormsModule,
         MatDialogModule,
         MatButtonModule,
