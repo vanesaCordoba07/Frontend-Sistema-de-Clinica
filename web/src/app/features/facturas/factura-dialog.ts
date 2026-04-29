@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
@@ -11,7 +11,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { AuditContextService } from '../../core/audit-context.service';
 import { FacturaService } from '../../core/services/factura.service';
 import { CitaService } from '../../core/services/cita.service';
-import { FacturaRead } from '../../models/api.models';
+import { CitaRead, FacturaRead } from '../../models/api.models';
 
 export interface FacturaDialogData {
     mode: 'create' | 'edit';
@@ -40,6 +40,7 @@ export class FacturaDialogComponent implements OnInit {
     private readonly snack = inject(MatSnackBar);
 
     readonly data = inject<FacturaDialogData>(MAT_DIALOG_DATA);
+    readonly citas = signal<CitaRead[]>([]);
 
     readonly form = this.fb.nonNullable.group({
         id_cita: ['', Validators.required],
@@ -51,6 +52,11 @@ export class FacturaDialogComponent implements OnInit {
     });
 
     ngOnInit(): void {
+
+        this.citaSvc.list().subscribe({
+            next: (rows) => this.citas.set(rows),
+            error: (err: HttpErrorResponse) => this.snack.open(this.msg(err), 'Cerrar', { duration: 6000 }),
+        });
         if (this.data.mode === 'edit' && this.data.row) {
             const r = this.data.row;
 
