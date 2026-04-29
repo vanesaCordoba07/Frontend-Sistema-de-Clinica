@@ -11,7 +11,7 @@ export const routes: Routes = [
     {
         path: 'app',
         canActivate: [auditUserGuard],
-        loadComponent: () => import('./features/main-layoutt').then((m) => m.MainLayoutComponent),
+        loadComponent: () => import('./features/shell/main-layout').then((m) => m.MainLayoutComponent),
         children: [
             { path: '', redirectTo: 'usuarios', pathMatch: 'full' },
             {

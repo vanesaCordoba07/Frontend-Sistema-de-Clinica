@@ -2,14 +2,14 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
-import { environment } from '../../../enviroments/environment';
+import { environment } from '../../../environments/environment';
 import { UsuarioCreate, UsuarioRead, UsuarioUpdate } from '../../models/api.models';
 
 @Injectable({ providedIn: 'root' })
 export class UsuarioService {
   private readonly base = `${environment.apiUrl}/usuarios`;
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(private readonly http: HttpClient) { }
 
   list(): Observable<UsuarioRead[]> {
     const params = new HttpParams().set('skip', 0).set('limit', 500);
