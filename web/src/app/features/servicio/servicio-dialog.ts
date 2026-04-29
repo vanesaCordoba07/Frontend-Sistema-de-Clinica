@@ -6,8 +6,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ServicioService } from '../../core/servicio.service';
+import { ServicioService } from '../../core/services/servicio.service';
 import { ServicioRead } from '../../models/api.models';
+
+export interface ServicioDialogData {
+    mode: 'create' | 'edit';
+    row?: ServicioRead;
+}
 
 @Component({
     selector: 'app-servicio-dialog',
@@ -20,7 +25,7 @@ export class ServicioDialogComponent implements OnInit {
     private svc = inject(ServicioService);
     private snack = inject(MatSnackBar);
     private dialogRef = inject(MatDialogRef<ServicioDialogComponent>);
-    data = inject<any>(MAT_DIALOG_DATA);
+    data = inject<ServicioDialogData>(MAT_DIALOG_DATA);
 
     form: FormGroup = this.fb.group({
         nombre: ['', Validators.required],

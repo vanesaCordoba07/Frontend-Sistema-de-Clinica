@@ -9,7 +9,7 @@ export class MedicoService {
     private http = inject(HttpClient);
     private url = 'http://localhost:8000/medicos';
 
-    // Cambié el nombre de getMedicos a 'list' porque así lo busca tu componente
+    // Cambié el nombre de getMedicos a 'list' porque así lo busca el componente
     list() {
         return this.http.get<MedicoRead[]>(this.url);
     }
