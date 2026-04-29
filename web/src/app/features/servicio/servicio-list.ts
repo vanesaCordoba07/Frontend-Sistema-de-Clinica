@@ -10,7 +10,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { filter } from 'rxjs/operators';
 
-import { ServicioService } from '../../core/servicio.service';
+import { ServicioService } from '../../core/services/servicio.service';
 import { ServicioRead } from '../../models/api.models';
 import { ServicioDialogComponent, ServicioDialogData } from './servicio-dialog';
 
@@ -78,7 +78,7 @@ export class ServicioListComponent implements AfterViewInit {
     }
 
     eliminar(row: ServicioRead): void {
-        if (!confirm(`¿Eliminar el servicio ${row.nombre_servicio}?`)) return;
+        if (!confirm(`¿Eliminar el servicio ${row.nombre}?`)) return;
         this.svc.delete(row.id_servicio).subscribe({
             next: () => {
                 this.snack.open('Servicio eliminado', 'OK', { duration: 3000 });
