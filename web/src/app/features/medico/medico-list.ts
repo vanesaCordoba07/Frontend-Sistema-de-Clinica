@@ -9,7 +9,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { filter } from 'rxjs/operators';
 
-import { MedicoService } from '../../core/medico.service';
+import { MedicoService } from '../../core/services/medico.service';
 import { MedicoRead } from '../../models/api.models';
 import { MedicoDialogComponent, MedicoDialogData } from './medico-dialog';
 
