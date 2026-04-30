@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { CommonModule } from '@angular/common';
 
 import { AuditContextService } from '../../core/audit-context.service';
 import { TratamientoService } from '../../core/services/tratamiento.service';
@@ -20,6 +21,7 @@ export interface TratamientoDialogData {
 
 @Component({
     selector: 'app-tratamiento-dialog',
+    standalone: true,
     imports: [
         ReactiveFormsModule,
         MatDialogModule,
@@ -28,6 +30,7 @@ export interface TratamientoDialogData {
         MatInputModule,
         MatSelectModule,
         MatSnackBarModule,
+        CommonModule
     ],
     templateUrl: './tratamiento-dialog.html',
 })
