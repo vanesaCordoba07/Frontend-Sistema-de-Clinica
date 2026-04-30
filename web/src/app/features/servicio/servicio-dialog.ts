@@ -40,6 +40,10 @@ export class ServicioDialogComponent implements OnInit {
         }
     }
 
+    cancel(): void{
+        this.dialogRef.close(false);
+    }
+
     save(): void {
         if (this.form.invalid) return;
 

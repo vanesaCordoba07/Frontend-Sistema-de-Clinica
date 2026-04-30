@@ -24,8 +24,8 @@ import { EnfermeroDialogComponent, EnfermeroDialogData } from './enfermero-dialo
     MatProgressSpinnerModule,
     MatSnackBarModule,
   ],
-  templateUrl: './cita-list.html',
-  styleUrl: './cita-list.scss',
+  templateUrl: './enfermero-list.html',
+  styleUrl: './enfermero-list.scss',
 })
 export class EnfermeroListComponent implements AfterViewInit {
   private readonly svc = inject(EnfermeroService);

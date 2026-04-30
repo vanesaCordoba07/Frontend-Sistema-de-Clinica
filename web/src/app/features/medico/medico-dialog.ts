@@ -9,8 +9,8 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
 
 import { AuditContextService } from '../../core/audit-context.service';
-import { MedicoService } from '../../core/medico.service';
-import { EspecialidadService } from '../../core/especialidad.service';
+import { MedicoService } from '../../core/services/medico.service';
+import { EspecialidadService } from '../../core/services/especialidad.service';
 import { MedicoRead, EspecialidadRead, MedicoCreate, MedicoUpdate } from '../../models/api.models';
 
 export interface MedicoDialogData {
@@ -31,7 +31,6 @@ export interface MedicoDialogData {
         MatSnackBarModule
     ],
     templateUrl: './medico-dialog.html',
-    styleUrl: './medico-dialog.scss'
 })
 export class MedicoDialogComponent implements OnInit {
     private fb = inject(FormBuilder);
@@ -71,6 +70,10 @@ export class MedicoDialogComponent implements OnInit {
                 licencia: this.data.row.licencia
             });
         }
+    }
+
+    cancel(): void{
+        this.dialogRef.close(false);
     }
 
     save(): void {

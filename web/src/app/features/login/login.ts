@@ -42,17 +42,16 @@ export class LoginComponent implements OnInit {
   readonly usuarios = signal<UsuarioRead[]>([]);
 
   readonly loginForm = this.fb.nonNullable.group({
-    nombre_usuario: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
     clave: ['', Validators.required],
   });
 
   readonly firstUserForm = this.fb.nonNullable.group({
     nombre_completo: ['', Validators.required],
-    nombre_usuario: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     clave: ['', [Validators.required, Validators.minLength(4)]],
     rol: ['admin', Validators.required],
-    telefono: [''],
+    estado: ['', [Validators.required]]
   });
 
   ngOnInit(): void {
@@ -78,10 +77,10 @@ export class LoginComponent implements OnInit {
       this.loginForm.markAllAsTouched();
       return;
     }
-    const { nombre_usuario } = this.loginForm.getRawValue();
-    const key = nombre_usuario.trim().toLowerCase();
+    const { email } = this.loginForm.getRawValue();
+    const key = email.trim().toLowerCase();
     const u = this.usuarios().find(
-      (x) => x.nombre_usuario.trim().toLowerCase() === key,
+      (x) => x.email.trim().toLowerCase() === key,
     );
     if (!u) {
       this.snack.open('Usuario no encontrado. Revisa el nombre o crea un usuario en la base.', 'Cerrar', {
@@ -102,12 +101,10 @@ export class LoginComponent implements OnInit {
     this.usuarioService
       .create({
         nombre_completo: v.nombre_completo,
-        nombre_usuario: v.nombre_usuario,
         email: v.email,
         clave: v.clave,
         rol: v.rol,
-        telefono: v.telefono || null,
-        activo: true,
+        estado: v.estado
       })
       .subscribe({
         next: (created) => {

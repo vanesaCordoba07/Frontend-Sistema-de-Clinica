@@ -9,7 +9,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { filter } from 'rxjs/operators';
 
-import { EspecialidadService } from '../../core/especialidad.service';
+import { EspecialidadService } from '../../core/services/especialidad.service';
 import { EspecialidadRead } from '../../models/api.models';
 import { EspecialidadDialogComponent, EspecialidadDialogData } from './especialidad-dialog';
 
