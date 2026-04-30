@@ -7,6 +7,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { CommonModule } from '@angular/common';
+
 
 import { AuditContextService } from '../../core/audit-context.service';
 import { EpsService } from '../../core/services/eps.service';
@@ -19,6 +21,7 @@ export interface EpsDialogData {
 
 @Component({
     selector: 'app-eps-dialog',
+    standalone: true,
     imports: [
         ReactiveFormsModule,
         MatDialogModule,
@@ -27,6 +30,7 @@ export interface EpsDialogData {
         MatInputModule,
         MatSelectModule,
         MatSnackBarModule,
+        CommonModule
     ],
     templateUrl: './eps-dialog.html',
 })

@@ -7,6 +7,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { CommonModule} from '@angular/common';
 import { filter } from 'rxjs/operators';
 
 import { CitaService } from '../../core/services/cita.service';
@@ -16,6 +17,7 @@ import { CitaDialogComponent, CitaDialogData } from './cita-dialog';
 
 @Component({
   selector: 'app-cita-list',
+  standalone: true,
   imports: [
     MatTableModule,
     MatPaginatorModule,
@@ -23,6 +25,7 @@ import { CitaDialogComponent, CitaDialogData } from './cita-dialog';
     MatIconModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
+    CommonModule,
   ],
   templateUrl: './cita-list.html',
   styleUrl: './cita-list.scss',
