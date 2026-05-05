@@ -13,10 +13,7 @@ import { AuditContextService } from '../../core/audit-context.service';
 import { UsuarioService } from '../../core/services/usuario.service';
 import { UsuarioRead } from '../../models/api.models';
 
-/**
- * Login de demostración: solo comprueba que el nombre de usuario exista en el API.
- * La contraseña no se valida contra el backend (hasta que exista autenticación real).
- */
+
 @Component({
   selector: 'app-login',
   imports: [
@@ -89,6 +86,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.audit.select(u.id_usuario);
+    localStorage.setItem('usuario', JSON.stringify(u));
     void this.router.navigateByUrl('/app');
   }
 
@@ -110,6 +108,7 @@ export class LoginComponent implements OnInit {
         next: (created) => {
           this.usuarios.set([...this.usuarios(), created]);
           this.audit.select(created.id_usuario);
+          localStorage.setItem('usuario', JSON.stringify(created));
           void this.router.navigateByUrl('/app');
         },
         error: (err: HttpErrorResponse) => this.snack.open(this.msg(err), 'Cerrar', { duration: 6000 }),
