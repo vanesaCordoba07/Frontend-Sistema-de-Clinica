@@ -35,9 +35,9 @@ export class CitaListComponent implements AfterViewInit {
   private readonly dialog = inject(MatDialog);
   private readonly snack = inject(MatSnackBar);
 
-  readonly displayedColumns = ['nombre', 'id_usuario', 'estado', 'fecha_creacion', 'acciones'];
+  readonly displayedColumns = ['motivo', 'id_paciente', 'fecha_hora', 'estado', 'acciones'];
   readonly dataSource = new MatTableDataSource<CitaRead>([]);
-  loading = true;
+  loading = true; 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 

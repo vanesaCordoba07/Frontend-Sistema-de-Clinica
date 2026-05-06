@@ -1,14 +1,14 @@
 <div class="page-head">
-  <h1>Productos</h1>
+  <h1>Citas</h1>
   <button mat-flat-button color="primary" type="button" (click)="nuevo()">
     <mat-icon>add</mat-icon>
-    Nuevo
+    Nueva Cita
   </button>
 </div>
 
 @if (loading) {
   <div class="loading">
-    <mat-spinner />
+    <mat-spinner /> 
   </div>
 } @else {
   <div class="table-wrap mat-elevation-z2">
@@ -20,14 +20,6 @@
       <ng-container matColumnDef="id_paciente">
         <th mat-header-cell *matHeaderCellDef>Paciente (id)</th>
         <td mat-cell *matCellDef="let r">{{ shortId(r.id_paciente) }}</td>
-      </ng-container>
-      <ng-container matColumnDef="id_medico">
-        <th mat-header-cell *matHeaderCellDef>Médico (id)</th>
-        <td mat-cell *matCellDef="let r">{{ shortId(r.id_medico) }}</td>
-      </ng-container>
-      <ng-container matColumnDef="id_servicio">
-        <th mat-header-cell *matHeaderCellDef>Servicio (id)</th>
-        <td mat-cell *matCellDef="let r">{{ shortId(r.id_servicio) }}</td>
       </ng-container>
       <ng-container matColumnDef="fecha_hora">
         <th mat-header-cell *matHeaderCellDef>Fecha y Hora</th>

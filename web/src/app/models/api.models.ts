@@ -255,7 +255,7 @@ export interface ServicioRead {
 export interface ServicioCreate {
   nombre_servicio: string;
   descripcion: string;
-  costo: number;
+  costo_base: number;
   estado: string;
   id_usuario_creacion: string;
 }
@@ -263,7 +263,7 @@ export interface ServicioCreate {
 export interface ServicioUpdate {
   nombre_servicio?: string;
   descripcion?: string;
-  costo?: number;
+  costo_base?: number;
   estado?: string;
   id_usuario_edicion: string;
 }
