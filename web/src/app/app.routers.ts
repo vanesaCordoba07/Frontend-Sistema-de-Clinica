@@ -54,6 +54,21 @@ export const routes: Routes = [
                 loadComponent: () =>
                     import('./features/tratamientos/tratamiento-list').then((m) => m.TratamientoListComponent),
             },
+            {
+                path: 'medicos',
+                loadComponent: () =>
+                    import('.//features/medico/medico-list').then((m) => m.MedicoListComponent),
+            },
+            {
+                path: 'servicios',
+                loadComponent: () =>
+                    import('./features/servicio/servicio-list').then((m) => m.ServicioListComponent),
+            },
+            {
+                path: 'especialidades',
+                loadComponent: () =>
+                    import('./features/especialidad/especialidad-list').then((m) => m.EspecialidadListComponent),
+            },
         ],
     },
     { path: '**', redirectTo: 'login' },

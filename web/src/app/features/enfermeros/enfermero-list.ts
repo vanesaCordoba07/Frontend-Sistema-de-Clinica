@@ -32,7 +32,7 @@ export class EnfermeroListComponent implements AfterViewInit {
   private readonly dialog = inject(MatDialog);
   private readonly snack = inject(MatSnackBar);
 
-  readonly displayedColumns = ['nombre', 'id_usuario', 'telefono', 'area', 'turno', 'acciones'];
+  readonly displayedColumns = ['nombre', 'telefono', 'area', 'turno', 'acciones'];
   readonly dataSource = new MatTableDataSource<EnfermeroRead>([]);
   loading = true;
 
@@ -54,6 +54,12 @@ export class EnfermeroListComponent implements AfterViewInit {
       next: (rows) => {
         this.dataSource.data = rows;
         this.loading = false;
+
+        setTimeout(() => {
+          if (this.paginator) {
+              this.dataSource.paginator = this.paginator;
+          }
+        });
       },
       error: (err: HttpErrorResponse) => {
         this.loading = false;
