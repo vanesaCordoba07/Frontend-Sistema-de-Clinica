@@ -2,7 +2,7 @@
 <mat-dialog-content class="dialog-body">
   <form [formGroup]="form" class="grid">
     <mat-form-field appearance="outline" class="span-2">
-      <mat-label>Paciente</mat-label>
+      <mat-label>Usuario</mat-label>
       <mat-select formControlName="id_usuario">
         @for (u of usuarios(); track u.id_usuario) {
           <mat-option [value]="u.id_usuario">{{ u.nombre }}</mat-option>

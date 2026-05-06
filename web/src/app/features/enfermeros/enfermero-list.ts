@@ -52,14 +52,13 @@ export class EnfermeroListComponent implements AfterViewInit {
     this.loading = true;
     this.svc.list().subscribe({
       next: (rows) => {
+        console.log('DATOS DEL BACKEND', rows);
         this.dataSource.data = rows;
         this.loading = false;
 
-        setTimeout(() => {
-          if (this.paginator) {
-              this.dataSource.paginator = this.paginator;
-          }
-        });
+        if (this.paginator) {
+          this.paginator.firstPage();
+        }
       },
       error: (err: HttpErrorResponse) => {
         this.loading = false;

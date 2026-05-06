@@ -51,7 +51,6 @@ export class FacturaDialogComponent implements OnInit {
         metodo_pago: [''],
         estado_pago: ['', Validators.required],
         fecha_pago: ['', Validators.required],
-
     });
 
     ngOnInit(): void {
@@ -69,8 +68,6 @@ export class FacturaDialogComponent implements OnInit {
                 metodo_pago: r.metodo_pago,
                 estado_pago: r.estado_pago,
                 fecha_pago: r.fecha_pago,
-
-
             });
         }
     }
