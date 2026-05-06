@@ -8,10 +8,16 @@
 
         <mat-form-field appearance="outline" class="span-2">
             <mat-label>Historial</mat-label>
-            <input matInput formControlName="id_historial" />
-            <mat-error *ngIf="form.get('id_historial')?.hasError('required')">
-                El historial es obligatorio
-            </mat-error>
+            <mat-select formControlName="id_historial">
+                @for (h of historiales(); track h.id_historial) {
+                <mat-option [value]="h.id_historial">
+                    {{ h.diagnostico }} <!-- O el campo que quieras mostrar como texto -->
+                </mat-option>
+                }
+            </mat-select>
+            @if (form.get('id_historial')?.hasError('required')) {
+                <mat-error>El historial es obligatorio</mat-error>
+            }
         </mat-form-field>
 
 
