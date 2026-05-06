@@ -4,8 +4,6 @@ import { map, Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
 import {
-
-    FacturaRead,
     PacienteCreate,
     PacienteRead,
     PacienteUpdate
@@ -13,7 +11,7 @@ import {
 
 @Injectable({ providedIn: 'root' })
 export class PacienteService {
-    private readonly base = `${environment.apiUrl}/facturas`;
+    private readonly base = `${environment.apiUrl}/pacientes`;
 
     constructor(private readonly http: HttpClient) { }
 

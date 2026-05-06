@@ -7,7 +7,7 @@ import { EnfermeroCreate, EnfermeroRead, EnfermeroUpdate } from '../../models/ap
 
 @Injectable({ providedIn: 'root' })
 export class EnfermeroService {
-  private readonly base = `${environment.apiUrl}/historiales`;
+  private readonly base = `${environment.apiUrl}/enfermeros`;
 
   constructor(private readonly http: HttpClient) { }
 
