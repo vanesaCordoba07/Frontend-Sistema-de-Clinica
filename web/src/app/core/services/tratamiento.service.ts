@@ -13,7 +13,7 @@ import {
 
 @Injectable({ providedIn: 'root' })
 export class TratamientoService {
-    private readonly base = `${environment.apiUrl}/facturas`;
+    private readonly base = `${environment.apiUrl}/tratamientos`;
 
     constructor(private readonly http: HttpClient) { }
 

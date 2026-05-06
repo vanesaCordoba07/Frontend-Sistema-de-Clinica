@@ -7,8 +7,14 @@
 
 
         <mat-form-field appearance="outline" class="span-2">
-            <mat-label>Cita</mat-label>
-            <input matInput formControlName="id_cita" />
+            <mat-label>Seleccionar Cita</mat-label>
+            <mat-select formControlName="id_cita">
+                @for (c of citas(); track c.id_cita) {
+                <mat-option [value]="c.id_cita">
+                    {{ c.motivo }}
+                </mat-option>
+                }
+            </mat-select>
             <mat-error *ngIf="form.get('id_cita')?.hasError('required')">
                 La cita es obligatoria
             </mat-error>

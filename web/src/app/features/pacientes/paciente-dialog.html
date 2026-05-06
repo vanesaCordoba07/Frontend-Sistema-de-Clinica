@@ -17,7 +17,13 @@
 
         <mat-form-field appearance="outline" class="span-2">
             <mat-label>EPS</mat-label>
-            <input matInput formControlName="id_eps" />
+            <mat-select formControlName="id_eps">
+                @for (eps of epsList(); track eps.id_eps) {
+                <mat-option [value]="eps.id_eps">
+                    {{ eps.nombre }}
+                </mat-option>
+                }
+            </mat-select>
             <mat-error *ngIf="form.get('id_eps')?.hasError('required')">
                 La EPS es obligatoria
             </mat-error>
@@ -25,7 +31,13 @@
 
         <mat-form-field appearance="outline" class="span-2">
             <mat-label>Usuario</mat-label>
-            <input matInput formControlName="id_usuario" />
+            <mat-select formControlName="id_usuario">
+                @for (u of usuarios(); track u.id_usuario) {
+                <mat-option [value]="u.id_usuario">
+                    {{ u.nombre_completo }} ({{ u.rol }})
+                </mat-option>
+                }
+            </mat-select>
             <mat-error *ngIf="form.get('id_usuario')?.hasError('required')">
                 El usuario es obligatorio
             </mat-error>
