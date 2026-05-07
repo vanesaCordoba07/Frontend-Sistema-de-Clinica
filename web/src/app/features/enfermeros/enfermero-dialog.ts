@@ -59,7 +59,6 @@ export class EnfermeroDialogComponent implements OnInit {
     if (this.data.mode === 'edit' && this.data.row) {
       const r = this.data.row;
       this.form.patchValue({
-        id_usuario: r.id_usuario,
         nombre: r.nombre,
         telefono: r.telefono,
         area: r.area,
@@ -91,7 +90,6 @@ export class EnfermeroDialogComponent implements OnInit {
           telefono: v.telefono,
           area: v.area,
           turno: v.turno,
-
         })
         .subscribe({
           next: () => this.dialogRef.close(true),
