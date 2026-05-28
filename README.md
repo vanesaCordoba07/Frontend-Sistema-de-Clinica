@@ -1,6 +1,3 @@
-¡Perfecto! He actualizado el **README.md** incluyendo la sección para el video demostrativo y ajustando los detalles finales para que quede listo para tu repositorio.
-
----
 
 # 🏥 Frontend - Sistema de Gestión Médica
 
@@ -9,7 +6,9 @@ Este proyecto es el cliente web desarrollado en **Angular** para la administraci
 ## 📺 Video Demostrativo
 Puedes ver el funcionamiento detallado del sistema en el siguiente enlace:
 👉 https://canva.link/xdipwkct01i6vld
-
+---
+## 📺 Video Demostrativo: DESPLIEGUE EN FIREBASE Y EN RENDER CON FRONTEND Y BACKEND
+👉 https://canva.link/uz3fvx03lx9odup
 ---
 
 ## 📁 Estructura del Proyecto
