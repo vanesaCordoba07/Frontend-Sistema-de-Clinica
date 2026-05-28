@@ -41,3 +41,14 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+
+.firebaserc
+firebase.json
+sistema-de-clinica-*.json
+skills-lock.json
+web/agents/skills/
+web/dist/
+web/.angular/
+web/agents/
+agents/
